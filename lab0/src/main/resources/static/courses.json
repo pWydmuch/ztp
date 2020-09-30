@@ -1,0 +1,16 @@
+[ {
+  "id" : 1,
+  "courseCode" : "B343vd",
+  "name" : "Fizyka",
+  "students" : null
+}, {
+  "id" : 2,
+  "courseCode" : "VDrefrf",
+  "name" : "Programowanie",
+  "students" : null
+}, {
+  "id" : 3,
+  "courseCode" : "B343vd",
+  "name" : "sdfds",
+  "students" : null
+} ]

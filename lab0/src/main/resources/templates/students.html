@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<a th:href="@{http://localhost:8080}">Back</a>
+<table>
+    <thead>
+    <tr>
+        <th>Student indeks</th>
+        <th>Student name</th>
+        <th>Student surname</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${students.empty}">
+        <td colspan="2"> No Courses Available</td>
+    </tr>
+    <tr th:each="student : ${students}">
+        <td><span th:text="${student.indeks}"></span></td>
+        <td><span th:text="${student.name}"></span></td>
+        <td><span th:text="${student.surname}"></span></td>
+        <td><a th:href="@{'http://localhost:8080/students/update/'+${student.indeks}}"><span>Change data</span></a></td>
+    </tr>
+    </tbody>
+</table>
+<form action="#" th:action="@{http://localhost:8080/students}" th:object="${student}" method="post">
+    <label for="name">Index</label>
+    <input type="text" th:field="*{indeks}" id="indeks" placeholder="Index">
+
+    <label for="name">Name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Name">
+    <!--<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>-->
+    <label for="surname">Surname</label>
+    <input type="text" th:field="*{surname}" id="surname" placeholder="Surname">
+    <!--<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>-->
+    <input type="submit" value="Add Student">
+</form>
+<form action="#" th:action="@{http://localhost:8080/students/delete}" th:object="${student}" method="post">
+    <label for="name">Index</label>
+    <input type="text" th:field="*{indeks}" id="index2" placeholder="Index">
+    <input type="submit" value="Delete Student">
+</form>
+</body>
+</html>

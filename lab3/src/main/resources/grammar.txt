@@ -1,0 +1,7 @@
+<class-description> ::= <class-name>"{"{<field>[","]}"}"
+<field> ::= <field-type>":"<field-name>["="<initial-field-value>]
+<field-type> ::= "int" | "double" | "float" | "char" | "String"
+<class-name> ::= { <letter> }
+<field-name> ::= { <letter> }
+<initial-field-value> ::= { <letter> }
+<letter> ::= A | B | C | D | E | F | G | H | I |J | K | L | M | N | O |P | R | S | T | U | V | X | Y | Z

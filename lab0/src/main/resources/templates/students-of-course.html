@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<a th:href="@{http://localhost:8080/courses}">Back</a>
+<p>Students enrolled</p>
+<table>
+    <thead>
+    <tr>
+        <th>Student indeks</th>
+        <th>Student name</th>
+        <th>Student surname</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr th:if="${students.empty}">-->
+        <!--<td colspan="2"> No Students Enrolled</td>-->
+    <!--</tr>-->
+    <tr th:each="student : ${students}">
+        <td><span th:text="${student.indeks}"></span></td>
+        <td><span th:text="${student.name}"></span></td>
+        <td><span th:text="${student.surname}"></span></td>
+    </tr>
+    </tbody>
+</table>
+
+<p>Students not enrolled</p>
+<table>
+    <thead>
+    <tr>
+        <th>Student indeks</th>
+        <th>Student name</th>
+        <th>Student surname</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr th:if="${students.empty}">-->
+        <!--<td colspan="2"> No Students Available</td>-->
+    <!--</tr>-->
+    <tr th:each="student : ${studentsNE}">
+        <td><span th:text="${student.indeks}"></span></td>
+        <td><span th:text="${student.name}"></span></td>
+        <td><span th:text="${student.surname}"></span></td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:action="@{'http://localhost:8080/courses/'+${courseId}+'/students/enroll'}" th:object="${student}" method="post">
+    <label for="index2">Index</label>
+    <input type="text" th:field="*{indeks}" id="index2" placeholder="Index">
+    <input type="submit" value="Enroll Student">
+</form>
+
+<form action="#" th:action="@{'http://localhost:8080/courses/'+${courseId}+'/students/remove'}" th:object="${student}" method="post">
+    <label for="index3">Index</label>
+    <input type="text" th:field="*{indeks}" id="index3" placeholder="Index">
+    <input type="submit" value="Remove Student">
+</form>
+
+
+</body>
+</html>

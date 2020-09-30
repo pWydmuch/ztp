@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <a th:href="courses">Courses</a>
+    <a th:href="students">Students</a>
+    <p>Which persistance method do you want to use?</p>
+    <button id="db-button">Database</button>
+    <button id="file-button">File</button>
+    <button id="sync-button">Synchronize</button>
+    <script>
+        const fButton = document.querySelector("#file-button");
+        const dButton = document.querySelector("#db-button");
+        const sButton = document.querySelector("#sync-button");
+
+        fButton.addEventListener('click', event => {
+            console.log("sf");
+        fetch(`http://localhost:8080/courses/switch-to-file`)
+            .then((response) => {
+                    console.log("file courses")});
+        fetch(`http://localhost:8080/students/switch-to-file`)
+            .then((response) => {
+            console.log("file students")})}
+            );
+
+
+        dButton.addEventListener('click', event => {
+            fetch(`http://localhost:8080/courses/switch-to-db`
+        )
+        .then((response) => {
+            console.log("db courses")
+        })
+
+        fetch(`http://localhost:8080/students/switch-to-db`)
+            .then((response) => {
+            console.log("db students")
+        })
+
+        })
+
+
+        sButton.addEventListener('click', event => {
+            fetch(`http://localhost:8080/courses/sync`
+        )
+        .then((response) => {
+            console.log("db courses")
+        })
+        })
+    </script>
+</body>
+</html>
